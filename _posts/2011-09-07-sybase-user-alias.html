@@ -1,0 +1,14 @@
+---
+layout: post
+title: Sybase user ‘alias’
+date: '2011-09-07T19:58:00.000-04:00'
+author: Vivek Rathod
+tags:
+- Sybase
+- Technology
+modified_time: '2013-01-24T12:07:36.625-05:00'
+blogger_id: tag:blogger.com,1999:blog-3203466822740858620.post-3275172456496081831
+blogger_orig_url: https://blog.vivekrathod.com/2011/09/sybase-user-alias.html
+---
+
+<p>In the <a href="http://blog.vivekrathod.com/?p=91">last</a> post I stated that a Sybase ‘login’ is mapped to a ‘database user’. In this post, I’ll elaborate on it further and introduce the concept of an ‘alias’. </p>  <p>One ‘login’ can be mapped to only one ‘database user’ in the given database. Obviously, at the server-level one ‘login’ can, and generally is mapped to many database users in different databases. For example, the ‘sa’ login is mapped to ‘dbo’ users in all databases. But how about the relationship in the other direction i.e. from ‘database user’ to a ‘login’? </p>  <p>Each ‘database user’ is also associated with one ‘login’ – except when there exists an ‘alias’. It is possible for two or more logins to be mapped to the same ‘database user’ by creating an ‘alias’. This allows both the logins to act as the same ‘database user’. This is typically done to allow multiple logins to act as database owners (i.e. user ‘dbo’). For example, as I mentioned earlier, ‘sa’ is always mapped to the ‘dbo’ user. If you wish to make someone else, lets say, ‘president’ login act as the ‘dbo’ database user, you create an alias </p>  <blockquote>   <p>sp_addalias ‘president’, ‘dbo’</p> </blockquote>  <p>This would make both ‘sa’ and ‘president’ act as ‘dbo’. Note that you can have many aliases for a given ‘login’. You could very well also alias ‘vice_president’ to ‘sa’</p>  <blockquote>   <p>sp_addalias ‘vice_president’, ‘dbo’</p> </blockquote>  <p>Even though multiple logins now act as the same ‘database user’, their activity can still be audited individually. This would not be possible if you simply gave the password for ‘sa’ login to everyone who you wish to make ‘dbo’, for example.</p>

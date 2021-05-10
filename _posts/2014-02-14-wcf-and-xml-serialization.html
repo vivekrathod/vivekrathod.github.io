@@ -1,0 +1,12 @@
+---
+layout: post
+title: WCF and XML serialization
+date: '2014-02-14T08:19:00.001-05:00'
+author: Vivek Rathod
+tags: 
+modified_time: '2014-02-16T22:20:28.036-05:00'
+blogger_id: tag:blogger.com,1999:blog-3203466822740858620.post-2768507339968570918
+blogger_orig_url: https://blog.vivekrathod.com/2014/02/wcf-and-xml-serialization.html
+---
+
+<div dir="ltr" style="text-align: left;" trbidi="on">..continued from <a href="http://blog.vivekrathod.com/2014/01/invalid-xml-characters.html" target="_blank">earlier post</a><br /><br />The default <a href="http://msdn.microsoft.com/en-us/library/system.runtime.serialization.datacontractserializer(v=vs.110).aspx" target="_blank">DataContractSerializer</a> used in WCF will serialize ‘<a href="http://msdn.microsoft.com/en-us/library/ms731073(v=vs.110).aspx" target="_blank">strings containing control characters with a hexadecimal value below 20 as XML entities.</a>’ This is obviously going to produce invalid XML 1.0. <br />But it was interesting to find that XML 1.1 spec makes valid ‘<a href="http://www.w3.org/TR/xml11/#sec-xml11" target="_blank">the use of character references to the control characters #x1 through #x1F, most of which are forbidden in XML 1.0.</a>’&nbsp; In fact, it makes <strong><a href="http://www.w3.org/TR/xml11/#charsets" target="_blank">all Unicode characters valid.</a>&nbsp;</strong><br /><pre class="csharpcode">[#x1-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]    <span class="rem">/* any Unicode character, excluding the surrogate blocks, FFFE, and FFFF. */</span></pre><br />I wonder then if we can make WCF use XML 1.1 <em>only</em>? I don’t know – but&nbsp; as per <a href="http://www.hadleynet.org/marc/whatsnew.html#infoset" target="_blank">Whats New in SOAP 1.2</a> SOAP 1.1 uses XML 1.0, and for SOAP 1.2 ‘<a href="http://www.hadleynet.org/marc/whatsnew.html#infoset" target="_blank">it is left to the specification of a binding to an underlying protocol to specify the XML serialisation used in underlying protocol data units. The HTTP binding specified in [SOAP 1.2 - Part 2] uses XML 1.0 as the serialisation of the SOAP message infoset.</a>’ So it may not be <em>readily</em> possible to make WCF use XML 1.1, even if ones decides to support only SOAP 1.2. It’ll require more research</div>

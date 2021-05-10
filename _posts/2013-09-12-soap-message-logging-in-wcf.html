@@ -1,0 +1,15 @@
+---
+layout: post
+title: SOAP message logging in WCF
+date: '2013-09-12T14:36:00.001-04:00'
+author: Vivek Rathod
+tags:
+- ".NET"
+- tips
+- WCF
+modified_time: '2013-09-12T14:36:34.744-04:00'
+blogger_id: tag:blogger.com,1999:blog-3203466822740858620.post-1911389207366406408
+blogger_orig_url: https://blog.vivekrathod.com/2013/09/soap-message-logging-in-wcf.html
+---
+
+<p>A simple way to turn-on SOAP message logging is to add something like the below to app.config</p><pre>&lt;system.diagnostics&gt;<br />  &lt;sources&gt;<br />      &lt;source name="System.ServiceModel.MessageLogging"&gt;<br />        &lt;listeners&gt;<br />                 &lt;add name="messages"<br />                 type="System.Diagnostics.XmlWriterTraceListener"<br />                 initializeData="c:\logs\messages.svclog" /&gt;<br />          &lt;/listeners&gt;<br />      &lt;/source&gt;<br />    &lt;/sources&gt;<br />&lt;/system.diagnostics&gt;<br /><br />&lt;system.serviceModel&gt;<br />  &lt;diagnostics&gt;<br />    &lt;messageLogging <br />         logEntireMessage="true" <br />         logMalformedMessages="false"<br />         logMessagesAtServiceLevel="true" <br />         logMessagesAtTransportLevel="false"<br />         maxMessagesToLog="3000"<br />         maxSizeOfMessageToLog="2000"/&gt;<br />  &lt;/diagnostics&gt;<br />&lt;/system.serviceModel&gt;</pre>  

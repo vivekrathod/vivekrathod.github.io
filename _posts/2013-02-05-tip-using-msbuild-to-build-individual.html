@@ -1,0 +1,15 @@
+---
+layout: post
+title: 'Tip : Using ‘msbuild’ to build individual projects in a Visual Studio solution
+  file'
+date: '2013-02-05T14:54:00.001-05:00'
+author: Vivek Rathod
+tags:
+- configuration management
+- tips
+modified_time: '2013-02-05T14:57:23.153-05:00'
+blogger_id: tag:blogger.com,1999:blog-3203466822740858620.post-3534512803249803922
+blogger_orig_url: https://blog.vivekrathod.com/2013/02/tip-using-msbuild-to-build-individual.html
+---
+
+<div dir="ltr" style="text-align: left;" trbidi="on">Some times its very annoying to run a full build to debug an issue with a particular project. To build just one project from a solution file you can do something like this<br /><pre class="csharpcode"></pre><pre class="csharpcode">msbuild solution_file.sln /t:<span class="str">"solution_folder\project_name"</span> /p:Configuration=Debug</pre><br />where ‘solution_folder’ is the solution folder under which the ‘project_name’ project is located<br /><br />There is another way, but that does not take into account the project dependencies (as they are defined in the solution file)<br /><pre class="csharpcode"></pre><pre class="csharpcode">msbuild path_to_project_file /t:Build /p:Configuration=Debug</pre></div>

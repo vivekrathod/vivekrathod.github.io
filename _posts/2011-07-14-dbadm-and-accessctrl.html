@@ -1,0 +1,15 @@
+---
+layout: post
+title: DBADM and ACCESSCTRL
+date: '2011-07-14T13:19:00.000-04:00'
+author: Vivek Rathod
+tags:
+- security
+- DB2
+- Technology
+modified_time: '2013-01-24T12:07:36.634-05:00'
+blogger_id: tag:blogger.com,1999:blog-3203466822740858620.post-4401384709479874304
+blogger_orig_url: https://blog.vivekrathod.com/2011/07/dbadm-and-accessctrl.html
+---
+
+Continuing along the same lines as the previous post about DBADM and DATAACCESS, there is much more that was taken away from DBADM in DB2 9.7.<br/><br/>1.  ability to GRANT/REVOKE *any* database authority (except SECADM, which it never had)<br/><br/>2. ability to GRANT/REVOKE *any* privilege on *any* database object<br/><br/>This again is a significant step towards achieving separation of duties between the 'security administrator' and the 'database administrator'. A new authority 'Access Control authority' (ACCESSCTRL) was introduced to hold these privileges. By default, when DBADM is granted, ACCESSCTRL is also granted, but one can now choose to not do so by using<br/><pre style="padding-left: 30px;">GRANT DBADM WITHOUT ACCESSCTRL</pre><br/><pre><span style="font-family: Georgia, 'Times New Roman', 'Bitstream Charter', Times, serif; font-size: 13px; line-height: 19px; white-space: normal;">One thing to keep in mind is when DBADM is revoked, DATAACCESS and ACCESSCTRL (if granted by default) are NOT automatically revoked.</span></pre>

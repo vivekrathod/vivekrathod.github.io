@@ -1,0 +1,11 @@
+---
+layout: post
+title: 
+date: '2012-04-11T16:23:00.001-04:00'
+author: Vivek Rathod
+tags: 
+modified_time: '2012-04-11T16:23:21.322-04:00'
+blogger_id: tag:blogger.com,1999:blog-3203466822740858620.post-1573508370947942067
+---
+
+<div dir="ltr" style="text-align: left;" trbidi="on">So, I have an iMac at home and a MacBook Air that I recently bought. I wanted to to be able to use iPhoto from both machines and have access to the same <i>set </i>of photos. This way I can import my photos into iMac and edit them later on from my Air, or vice&nbsp;verse.<br />I figured I could achieve this if I keep the iPhoto libraries in sync between the two machines. I started doing this with rsync, and it did work well. Something like this did the trick<br /><br /><span style="font-family: 'Courier New', Courier, monospace;">rsync -avz &nbsp;~\Pictures/iPhoto\ Library/ user@imac.local:"~\Pictures/iPhoto\ Library/"</span><br /><span style="font-family: 'Courier New', Courier, monospace;"><br /></span><br /><span style="font-family: Times, 'Times New Roman', serif;"><br /></span></div>

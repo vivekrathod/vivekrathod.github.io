@@ -1,0 +1,14 @@
+---
+layout: post
+title: MacPorts
+date: '2011-09-05T22:35:00.000-04:00'
+author: Vivek Rathod
+tags:
+- OS X
+- Technology
+modified_time: '2013-01-24T12:07:36.647-05:00'
+blogger_id: tag:blogger.com,1999:blog-3203466822740858620.post-802812126941124116
+blogger_orig_url: https://blog.vivekrathod.com/2011/09/macports.html
+---
+
+I was looking for an easy way to upgrade an outdated version 2.6.9 of rsync on my OS X Lion MacBook. I'm not too good with UNIX to begin with and finding required dependencies etc on my OS X Lion would be a time consuming task. So I was looking around for any ready-to-use installers or binaries of the latest 3.0.8, when I stumbled upon this neat project called <a href="http://www.macports.com">MacPorts</a>. It provides an easy to use system for getting binaries for such open-source tools on the Mac OS X systems. Installation was simple - this is from the <a href="http://www.macports.org/index.php">MacPorts</a> website<br/><br/>- “dmg” disk images for <a href="https://distfiles.macports.org/MacPorts/MacPorts-2.0.2-10.7-Lion.dmg">Lion</a> and <a href="https://distfiles.macports.org/MacPorts/MacPorts-2.0.2-10.6-SnowLeopard.dmg">Snow Leopard</a>. These contain pkg installers for use with the Mac OS X Installer. This is the simplest installation procedure that most users should <a href="http://www.macports.org/install.php#pkg">follow</a> after meeting the requirements listed <a href="http://www.macports.org/install.php#requirements">below</a>. An installer for<a href="https://distfiles.macports.org/MacPorts/MacPorts-2.0.2-10.5-Leopard.dmg">Leopard</a>, as a legacy platform, is also available.<br/><br/>Before installing <a href="http://blog.vivekrathod.com/?p=69">enable the root user</a> and install <a href="http://developer.apple.com/technologies/tools/">Xcode</a> from the AppStore (on Lion) or <a href="http://connect.apple.com/">Apple dev connection</a> website (Snow Leopard/Leopard). You would need X11 as well for ports that depend on it. Use the package installer and then simply run this to update to the latest of MacPorts<br/><br/>sudo port -v selfupdate<br/><br/>Now, if you know the program you want to install is supported by MacPorts, like rsync for example, all you do to install it is<br/><br/>sudo port install rsync<br/><br/>&nbsp;

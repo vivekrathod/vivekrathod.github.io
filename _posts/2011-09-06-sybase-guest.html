@@ -1,0 +1,14 @@
+---
+layout: post
+title: Sybase ‘guest’
+date: '2011-09-06T21:33:00.000-04:00'
+author: Vivek Rathod
+tags:
+- Sybase
+- Technology
+modified_time: '2013-01-24T12:07:36.649-05:00'
+blogger_id: tag:blogger.com,1999:blog-3203466822740858620.post-8097845553372625211
+blogger_orig_url: https://blog.vivekrathod.com/2011/09/sybase-guest.html
+---
+
+A little background on Sybase first. Each instance of Sybase server typically contains many databases. TCP/IP is usually enabled and 5000 is the default port, but this can obviously be changed. One logons to the Sybase instance and thereby gets potential access to all databases residing at the instance. Some of the databases like ‘master’, ‘tempdb’, ‘model’ etc get created at install time by the Sybase installer and are required for Sybase to run properly.<br/><br/><strong>Logins -</strong> A ’login’ gives you access to the instance and is a server-level concept. You can add a ‘login’ using<br/><blockquote><span style="font-family: 'Courier New';">sp_addlogin ‘login_name’, ‘password’</span></blockquote><br/>This adds an entry to the <span style="font-family: 'Courier New';">‘master.dbo.syslogins’</span> table. Although a ‘login’ gives you access to the instance, to get access to a particular database, it must be mapped to an existing ‘database user’.<br/><br/><strong>Database Users - </strong>Each database maintains its own set of database users. When creating a ‘database user’, the associated ‘login’ has to be supplied – like this<br/><blockquote><span style="font-family: 'Courier New';">sp_adduser ‘login_name’, ‘database_user’</span></blockquote><br/>This adds an entry to the<span style="font-family: 'Courier New';"> ‘&lt;database_name&gt;.dbo.sysusers’</span> table. Here the ‘login_name’ is mapped to ‘database_user’. Now, one thing to note is that one may add a ‘login’ but never map it to any particular ‘database user’ – what happens then is a little tricky and depends on the existence of a special user called ‘guest’.<br/><br/><strong>Special ‘guest’ - </strong>If an <em>explicit</em> mapping does not exist between the ‘login’ and any of the existing database users, then the ‘login’ is <em>implicitly </em>mapped to the special ‘guest’ user, if one exists. If the 'guest’ user does not exist, the ‘login’ is denied access to the database. One can easily add the ‘guest’ user if it does not exist by using<br/><blockquote><span style="font-family: 'Courier New';">sp_adduser guest</span></blockquote><br/>When creating new database (using ‘create database’ for example), the ‘model’ database gets used as a template. In the versions of Sybase (12.5, 15, 15.5 on Linux/Windows) I played with I did not see the user ‘guest’ defined in the ‘model’ database. So the new databases based on ‘model’ will also not have the ‘guest’ user by default.

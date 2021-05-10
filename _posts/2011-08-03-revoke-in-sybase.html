@@ -1,0 +1,15 @@
+---
+layout: post
+title: Revoke in Sybase
+date: '2011-08-03T18:06:00.000-04:00'
+author: Vivek Rathod
+tags:
+- Sybase
+- security
+- Technology
+modified_time: '2013-01-24T12:07:36.643-05:00'
+blogger_id: tag:blogger.com,1999:blog-3203466822740858620.post-7076810766757355782
+blogger_orig_url: https://blog.vivekrathod.com/2011/08/revoke-in-sybase.html
+---
+
+I learned something new today about how Sybase's  <em>revoke </em>SQL statement works<em>. </em>In Sybase a database user can be granted a privilege directly or indirectly (via role and/or group membership). In case of a direct grant, revoking the privilege will take the privilege out. But in case of an indirect grant its a little different.<br/><br/>If the indirect grant comes via a role, then <em>revoke </em> doesn't do anything (actually throws an error), but if the grant comes from the group to which the user belongs, then the user would be <em>denied </em> the privilege. Everyone else belonging to the group would continue to have the privilege except this user. A row is added to the <em>sysprotects</em> table to this effect.  Also note it should be noted that this applies to <em>object privileges </em>only - revoking an indirectly granted <em>system privilege (</em>either via role or group) does not have any effect.<br/><br/>Also, its worth nothing here that role privileges trump any privilege grants and revokes at the group or direct user level.<br/><br/>To explain this by an example, lets assume user user1 belongs to group group1 and is also granted a role role1.<br/><br/>grant select on table table1 to group1<br/><br/>This gives user1  a <em>select </em>privilege on table1 via group group1.<br/><br/>revoke select on table1 from user1<br/><br/>This <em>denies </em>user1 <em>select </em>on table1<br/><br/>grant select on table1 to role1<br/><br/>This gives the <em>select </em>privilege back to user1 because the role privilege trumps any group and user level grants/revokes<br/><br/>&nbsp;

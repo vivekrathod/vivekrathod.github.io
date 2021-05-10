@@ -1,0 +1,15 @@
+---
+layout: post
+title: DB2 - Can’t revoke access to functions under SYSIBM/SYSFUN
+date: '2014-01-20T10:43:00.001-05:00'
+author: Vivek Rathod
+tags:
+- security
+- DB2
+- Technology
+modified_time: '2014-01-20T10:53:32.712-05:00'
+blogger_id: tag:blogger.com,1999:blog-3203466822740858620.post-550771289229947565
+blogger_orig_url: https://blog.vivekrathod.com/2014/01/db2-cant-revoke-access-to-functions.html
+---
+
+<p>I was a bit surprised that one can’t revoke access to any of the functions under the system defined SYSIBM and SYSFUN schemas. Although these are system defined, it seems strange that DB2 does not allow revoking access to any of them. For example, there is a function called ‘GET_DBM_CONFIG’ in 8.2 which gives a lot of configuration related information to PUBLIC and you can’t revoke access to it.</p><pre class="csharpcode">db2 =&gt; revoke execute on sysfun.get_dbm_config from test<br />DB21034E  The command was processed as an SQL statement because it was not a<br />valid Command Line Processor command.  During SQL processing it returned:<br />SQL0204N  <span class="str">"SYSFUN.GET_DBM_CONFIG"</span> is an undefined name.  SQLSTATE=42704</pre><br /><style type="text/css">.csharpcode, .csharpcode pre<br />{<br />	font-size: small;<br />	color: black;<br />	font-family: consolas, "Courier New", courier, monospace;<br />	background-color: #ffffff;<br />	/*white-space: pre;*/<br />}<br />.csharpcode pre { margin: 0em; }<br />.csharpcode .rem { color: #008000; }<br />.csharpcode .kwrd { color: #0000ff; }<br />.csharpcode .str { color: #006080; }<br />.csharpcode .op { color: #0000c0; }<br />.csharpcode .preproc { color: #cc6633; }<br />.csharpcode .asp { background-color: #ffff00; }<br />.csharpcode .html { color: #800000; }<br />.csharpcode .attr { color: #ff0000; }<br />.csharpcode .alt <br />{<br />	background-color: #f4f4f4;<br />	width: 100%;<br />	margin: 0em;<br />}<br />.csharpcode .lnum { color: #606060; }<br /></style><br /><br /><p>Ref - <a title="http://publib.boulder.ibm.com/infocenter/db2luw/v8/topic/com.ibm.db2.udb.doc/admin/r0007699.htm" href="http://publib.boulder.ibm.com/infocenter/db2luw/v8/topic/com.ibm.db2.udb.doc/admin/r0007699.htm">http://publib.boulder.ibm.com/infocenter/db2luw/v8/topic/com.ibm.db2.udb.doc/admin/r0007699.htm</a></p>  
