@@ -12,11 +12,3 @@ blogger_orig_url: https://blog.vivekrathod.com/2015/05/i-published-ruby-script-t
 ---
 
 <div dir="ltr" style="text-align: left;" trbidi="on">I published a Ruby script today to make payments to Kohls somewhat less painful. I always found it very annoying that Kohls does *not* allow auto payments to be set.. I ended up paying late fees as a result once as well. Hopefully with this script setup as a cron job I'll not miss my payment. I'll just copy what the script does from the readme here.<br /><br />The script can be found at&nbsp;<a href="https://github.com/vivekrathod/KohlsAutoPay">https://github.com/vivekrathod/KohlsAutoPay</a><br /><br />README.MD<br />A ruby script to make auto payments to Kohls at <a href="https://credit.kohls.com/">https://credit.kohls.com</a><br />It allows one to login to their Kohls account and make payment for the<br />'current balance' (if any). I'm using this script as a cron job<br />that runs daily, and thought it may prove useful to others.<br /><br />What is needed to run the script?<br />Phantomjs (<a href="http://phantomjs.org/">http://phantomjs.org/</a>)<br />Capybara (<a href="https://github.com/jnicklas/capybara">https://github.com/jnicklas/capybara</a>)<br />Poltergeist (<a href="https://github.com/teampoltergeist/poltergeist">https://github.com/teampoltergeist/poltergeist</a>)<br />Mail (<a href="https://github.com/mikel/mail">https://github.com/mikel/mail</a>)<br /><br />On my OS X, I found homebrew (<a href="http://brew.sh/">http://brew.sh/</a>) to be the easiest way<br />to get all these installed.<br /><br />Also, please update the kohls user/pass and security questions/answers<br />in 'setupUserConfig' method of 'Kohls' class. Optionally, put your<br />gmail user/pass if you wish to receive email report of the payments made.<br /><br />What are current limitations?<br />1. only the 'current balance' on the account is paid<br />2. only Gmail is supported for sending the email for payment report</div>
-<script src="https://utteranc.es/client.js"
-        repo="vivekrathod/vivekrathod.github.io"
-        issue-term="pathname"
-        label="utterances"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
