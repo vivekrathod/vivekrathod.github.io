@@ -1,8 +1,8 @@
 ---
 title: Change hostname on Ubuntu
 date: 2021-05-25 00:00:00 Z
+description: 
 layout: post
-description: ''
 ---
 
 ## Check current hostname
@@ -11,4 +11,4 @@ Simply run `hostname` or `hostnamectl` command, or simply `echo "$HOSTNAME"` ...
 ## Change hostname
 * First `sudo hostnamectl set-hostname newNameHere`
 * Then edit `/etc/hosts` with `sudo nano /etc/hosts`
-* Reboot 'sudo reboot'
+* Reboot 'sudo reboot' for changes to take effect
