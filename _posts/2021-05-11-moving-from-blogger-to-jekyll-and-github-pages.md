@@ -1,9 +1,8 @@
 ---
+title: Moving from Blogger to Jekyll and GitHub Pages
+date: 2021-05-11 00:00:00 Z
 layout: post
-title: "Moving from Blogger to Jekyll and GitHub Pages"
-description: ""
-category: 
-tags: []
+description: ''
 ---
 
 # Moving from Blogger to Jekyll and GitHub Pages

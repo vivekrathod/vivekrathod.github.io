@@ -1,10 +1,10 @@
 ---
+title: Change hostname on Ubuntu
+date: 2021-05-25 00:00:00 Z
 layout: post
-title: "Change hostname on Ubuntu"
-description: ""
-category: 
-tags: []
+description: ''
 ---
+
 ## Check current hostname
 Simply run `hostname` or `hostnamectl` command, or simply `echo "$HOSTNAME"` ...or look into `cat /etc/hostname`
 

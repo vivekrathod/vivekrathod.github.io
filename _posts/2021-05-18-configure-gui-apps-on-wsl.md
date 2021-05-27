@@ -1,9 +1,8 @@
 ---
+title: Configure GUI apps on WSL
+date: 2021-05-18 00:00:00 Z
 layout: post
-title: "Configure GUI apps on WSL"
-description: ""
-category: 
-tags: []
+description: ''
 ---
 
 # Running GUI apps from WSL2 

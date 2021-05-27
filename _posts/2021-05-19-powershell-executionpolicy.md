@@ -1,9 +1,8 @@
 ---
+title: Running PowerShell scripts
+date: 2021-05-19 00:00:00 Z
 layout: post
-title: "Running PowerShell scripts"
-description: ""
-category: 
-tags: []
+description: ''
 ---
 
 #Tip: PowerShell ExecutionPolicy
